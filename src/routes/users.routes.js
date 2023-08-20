@@ -1,11 +1,16 @@
 import { Router } from "express";
-import { indexController } from "../controllers/users.controller.js";
+import {
+  deleteUserController,
+  usersListController,
+} from "../controllers/users.controller.js";
 import { pingController } from "../controllers/ping.controller.js";
 
-const router = Router();
+const userRouter = Router();
 
-router.get("/", indexController);
+userRouter.get("/users", usersListController);
 
-router.get("/ping", pingController);
+userRouter.delete("/users", deleteUserController);
 
-export default router;
+userRouter.get("/ping", pingController);
+
+export default userRouter;

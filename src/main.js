@@ -1,15 +1,16 @@
 import express from "express";
 import cors from "cors";
+import morgan from "morgan";
+import { PORT } from "./config.js";
 import usersRoutes from "./routes/users.routes.js";
+import authRouter from "./routes/auth.routes.js";
 
 const app = express();
-const port = 3000;
 
-app.listen(port);
+app.listen(PORT);
 app.use(cors());
+app.use(morgan("dev"));
+app.use(express.json());
 
-app.get("/test", (req, res) => {
-  res.send("Hola mundo");
-});
-
-app.use(usersRoutes);
+app.use("/api", usersRoutes);
+app.use("/api", authRouter);
