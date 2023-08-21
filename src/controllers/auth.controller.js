@@ -73,3 +73,25 @@ export const logOutController = (req, res) => {
   });
   return res.sendStatus(200);
 };
+
+export const profileController = async (req, res) => {
+  await pool.query("USE LgTeslap");
+
+  const [count] = await pool.query(
+    `SELECT COUNT(*) AS count FROM users WHERE user_id = '${req.user.id}'`
+  );
+
+  const counting = count[0].count;
+  if (counting <= 0) {
+    res.json({ message: "Profile not found" });
+  } else {
+    const [profile] = await pool.query(
+      `SELECT * FROM users WHERE user_id = '${req.user.id}' `
+    );
+    res.json({
+      id: profile[0].user_id,
+      username: profile[0].user_name,
+      email: profile[0].user_email,
+    });
+  }
+};
