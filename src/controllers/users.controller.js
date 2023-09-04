@@ -30,3 +30,9 @@ export const deleteUserController = async (req, res) => {
     res.status(500).json("There was an error");
   }
 };
+
+export const userServiceController = async () => {
+  try {
+    await pool.query("USE LgTeslap");
+  } catch (error) {}
+};

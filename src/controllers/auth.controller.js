@@ -29,6 +29,8 @@ export const loginController = async (req, res) => {
           id: useFound[0].user_id,
           name: useFound[0].user_name,
           email: useFound[0].user_email,
+          phone: useFound[0].user_phone,
+          is_admin: useFound[0].is_Admin,
         });
       }
     } else {
