@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "nodemon src/main.js",
     "build": "vite build",
-    "start": "serve dist -s -n -L -p 3000",
+    "start": "node src/main.js",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.9",
     "nodemon": "^3.0.1",
     "vite": "^4.4.5"
   },
